@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('pages.home');
+	 if(Auth::user()){
+	 	return view('pages.dashboard');
+	 }
+     return view('pages.home');
 });
 Route::get('/pages/dashboard', 'HomeController@index');
 Auth::routes();
