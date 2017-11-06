@@ -22,6 +22,7 @@ class CreateIncidentsTable extends Migration
             $table->date('fecha');
             $table->integer('cantidad');
             $table->string('descripcion');
+            $table->string('estado');
         });
     }
 
