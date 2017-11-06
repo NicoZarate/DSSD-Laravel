@@ -12,7 +12,8 @@
         @if (Auth::guest())
         <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
           @else
-            <li>Agregar Incidencia</li>
+             <li><a href="{{ url('/incident/list') }}">Mis Incidencias</a></li>
+             <li><a href="{{ url('/incident/create') }}">Agregar Incidencia</a></li>
         @endif
       </ul>
       <ul class="nav navbar-nav navbar-right">

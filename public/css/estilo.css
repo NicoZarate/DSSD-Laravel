@@ -1,0 +1,198 @@
+.navbar {
+    margin-bottom: 0;
+    background-color: #83cbd4;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 1px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #83cbd4 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.balance{
+    background: #83cbd4;
+    margin-top: 7px;
+}
+.navbar-nav>li>.dropdown-menu {
+  background-color: #83cbd4;
+}
+
+.dropdown-menu>li>a {
+  background-color: #83cbd4;
+}
+
+.container-fluid {
+    padding: 60px 50px;
+}
+.bg-grey {
+    background-color: #f6f6f6;
+}
+.logo-small {
+    color: rgba(139, 195, 74, 0.72);
+    font-size: 50px;
+}
+.logo {
+    color: rgba(139, 195, 74, 0.72);
+    font-size: 200px;
+}
+.thumbnail {
+  padding: 15px;
+}
+
+.carousel-indicators li {
+  border-color: rgba(139, 195, 74, 0.72);
+}
+
+.carousel-indicators li.active {
+    background-color: rgba(139, 195, 74, 0.72);
+}
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
+
+.item span {
+    font-style: normal;
+}
+
+
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+}
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+}  
+.jumbotron {
+    background-color: #83cbd4;
+    color: #fff;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+    padding-right: 60px;
+    padding-left: 60px;
+    border-radius: 0px;
+    margin-bottom: 0;
+}
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #f6f6f6;
+  padding: 25px;
+}
+
+.carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+  min-height:200px;
+}
+
+.carousel-inner > .item > img {
+  width:100%;
+  height:300px;
+}
+
+
+.btn-create{
+  float: right;
+  padding: 10px;
+  color: rgba(80, 70, 70, 0.88);
+  font: menu;
+  margin-bottom: 10px;
+  border-color: #83cbd4;
+  background-color: rgb(221, 221, 221);
+}
+
+.btn-create-submit{
+  padding: 15px;
+  border-color: #83cbd4;
+  background-color: rgb(221, 221, 221);
+  margin-bottom: 10px;
+}
+
+.btn-table{
+  margin: 5px;
+}
+
+.prod_container{
+  overflow-y: scroll;
+  max-height: 400px;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.billscan{
+  max-height:200px;
+  max-width: 200px;
+}
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #83cbd4;
+    border-color: #fcf9d4;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: rgba(0, 0, 0, 0.42);
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.img-circle {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .col-sm-4 {
+    text-align: center;
+    margin: 25px 0;
+  }
+
+  .carousel {
+    display: none; 
+  }
+}

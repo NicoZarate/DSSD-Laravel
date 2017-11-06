@@ -16,6 +16,7 @@ class IncidentController extends Controller
     public function index()
     {
         $incidents = Incident::all();
+        //print_r($incidents[0]->tipo );
         return view('incidents/incidents', compact('incidents'));
     }
 
