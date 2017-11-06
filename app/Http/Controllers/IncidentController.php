@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Incident;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,8 +14,9 @@ class IncidentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $incidents = Incident::all();
+    {   
+        $id = Auth::user()->id;
+        $incidents = Incident::all()->where('user_id',$id);
         //print_r($incidents[0]->tipo );
         return view('incidents/incidents', compact('incidents'));
     }
@@ -27,7 +28,7 @@ class IncidentController extends Controller
      */
     public function create()
     {
-        //
+        return view('incidents/agregarIncidente');
     }
 
     /**
