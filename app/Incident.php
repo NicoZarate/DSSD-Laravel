@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incident extends Model
 {
-    protected $fillable = ['user_id','tipo','fecha','cantidad','descripcion', 'created_at','updated_at'];
+    protected $fillable = ['user_id','tipo','fecha','cantidad','descripcion','estado', 'created_at','updated_at'];
 
     //tiene muchos objetos
 

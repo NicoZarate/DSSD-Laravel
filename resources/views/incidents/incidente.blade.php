@@ -1,31 +1,27 @@
 @extends('layouts.default')
 @section('content')
 <div class="container">
-	<h2>Listado de Incidentes</h2>
+	<h2>Incidente</h2>
 
-@if(count($incidents))
+@if(count($incident->objects))
 	<h4 class="col-xs-6">Mis Incidentes:</h4>  
 	      
 	<table class="table table-bordered table-condensed">
 	<thead>
 		<tr>
-		    <th>Tipo</th>
-		    <th>Fecha</th>
+		    <th>Nombre</th>
 		    <th>Descripcion</th>
 		    <th>Cantidad</th>
-		    <th>Estado</th>
-		    <th>Objetos</th>
+		    
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($incidents as $i)
+		@foreach($incident->objects as $i)
 		   <tr>
-			    <td>{{ $i->tipo }} </td>
-				<td>{{ $i->fecha }} </td>
+			    <td>{{ $i->nombre }} </td>
+			    <td>{{ $i->cantidad }}</td>
 		        <td>{{ $i->descripcion }}</td>
-		        <td>{{ $i->cantidad }}</td>
-		        <td>{{ $i->estado }}</td>
-                <td><div class="form-group" id="divs"><a href="{{ route('incidents.show',$i->id) }}" id="ver" >Ver</a></div></td>
+		        
 		   </tr>  
 
 		@endforeach

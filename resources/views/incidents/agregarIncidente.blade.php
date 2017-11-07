@@ -30,14 +30,9 @@
 		   	<input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ old('descripcion') }}" required>	  
 		</div> 
 
-		<div class="form-group">
-			<label for="cantidad">Cantidad de objetos a indemnizar:</label>
-		   	<input type="number" name="cantidad" id="cantidad" min="0" class="form-control" value="{{ old('cantidad') }}" required>	  
-		</div>
-
 		<div class="input_fields_wrap">
 		    <button class="add_field_button">Agregar Objetos</button>
-		    <div><input type="hidden" name="mytext[]"></div>
+		    <div><input type="hidden" name="objetos[]"></div>
 		</div>
 	   	
 	   	<br>
@@ -64,11 +59,11 @@
             x++; //text box increment
             $("#rm").remove(); 
             
-            $(wrapper).append('<div class="form-group" id="divs">Nombre: <input class="form-control" type="text" name="mytext[]"/>'); //add input box
-             $(wrapper).append('<div class="form-group" id="divs">Descripción: <input class="form-control" type="text" name="mytext[]"/>'); //add input box
-              $(wrapper).append('<div class="form-group" id="divs">Cantidad: <input class="form-control" type="text" name="mytext[]"/></div>'); //add input box
-               $(wrapper).append('<div class="form-group" id="divs"><a href="#" id="rm" class="remove_field">Eliminar</a></div>'); //add input box
-                $(wrapper).append('<br>')
+            $(wrapper).append('<div class="form-group" id="divs">Nombre: <input class="form-control" type="text" name="objetos[]"/>'); //add input box
+            $(wrapper).append('<div class="form-group" id="divs">Descripción: <input class="form-control" type="text" name="objetos[]"/>'); //add input box
+            $(wrapper).append('<div class="form-group" id="divs">Cantidad: <input class="form-control" type="text" name="objetos[]"/></div>'); //add input box
+            $(wrapper).append('<div class="form-group" id="divs"><a href="#" id="rm" class="remove_field">Eliminar</a></div>'); //add input box
+            $(wrapper).append('<br>')
         }
     });
     

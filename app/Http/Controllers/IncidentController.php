@@ -39,16 +39,26 @@ class IncidentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,['fecha'=> ['required'],
+
+
+      /*  $this->validate($request,['fecha'=> ['required'],
                                    'tipo'=> ['required'],
                                    'cantidad'=> ['required'],
-                                   'descripcion'=> ['required','max:190']
+                                   'descripcion'=> ['required','max:250']
                                    ]);
-         
-         Incident::create($request->all());
-         return redirect('incidents')
+*/        $objetos = $request->get('objetos');
+         Incident::create(['user_id'=> Auth::user()->id,
+                           'tipo'=> $request->get('tipo'),
+                           'fecha'=> $request->get('from'),
+                           'cantidad'=> count($objetos),
+                           'descripcion'=> $request->get('descripcion'),
+                           'estado'=> 'Nuevo'
+                           ]);
+        
+       
+      return redirect('incidents')
             ->with('status', 'success')
-            ->with('message', 'Incidente enviado exitosamente');
+            ->with('message', 'Producto creado exitosamente');
     }
 
     /**
@@ -60,6 +70,7 @@ class IncidentController extends Controller
     public function show(Incident $incident)
     {
         //
+        return view('incidents/incidente', compact('incident'));
     }
 
     /**
