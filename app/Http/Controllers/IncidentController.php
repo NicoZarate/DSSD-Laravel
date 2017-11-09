@@ -6,6 +6,8 @@ use App\Incident;
 use App\Objeto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
 
 class IncidentController extends Controller
 {
@@ -90,6 +92,30 @@ class IncidentController extends Controller
      * @param  \App\Incident  $incident
      * @return \Illuminate\Http\Response
      */
+
+    public function peticiones()
+    {
+        //'username=evaluador1&password=bpm&redirect=false&redirectURL='
+        $client = new Client([
+   
+            'base_uri' => 'http://localhost:8080/bonita/',
+            
+            'timeout'  => 2.0,
+             ]);
+        $headers = ['Content-Type' => 'application/x-www-form-urlencoded'];
+        $body = ['username' => 'evaluador1',
+                 'password' => 'bpm',
+                 'redirect' => false];
+                 
+        $response = $client->request('GET', '/API/bpm/process?p=0&c=10');
+        dd($response);
+    }
+
+
+
+
+
+
     public function edit(Incident $incident)
     {
         //

@@ -15,6 +15,8 @@
              <li><a href="{{ url('/pages/dashboard') }}"><span class="glyphicon glyphicon-home"></span></a></li>
              <li><a href="{{ url('incidents') }}">Mis Incidencias</a></li>
              <li><a href="{{ url('/incidents/create') }}">Agregar Incidencia</a></li>
+             <li><a href="{{ url('/incidents/req') }}">req</a></li>
+             
         @endif
       </ul>
       <ul class="nav navbar-nav navbar-right">
