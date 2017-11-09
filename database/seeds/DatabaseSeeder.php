@@ -1,16 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+//esto se supone que es para iniciar tablas con valores iniciales, pero no lo puedo hacer andar.
+class DatabaseSeeder extends Seeder {
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        Model::unguard();
+        $this->call(UsersTableSeeder::class);
+        Model::reguard();
     }
+
 }

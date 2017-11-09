@@ -12,7 +12,7 @@ class Incident extends Model
 
     public function objects()
     {
-        return $this->hasMany('App\Object');
+        return $this->hasMany('App\Objeto');
     }
 
     public function user()

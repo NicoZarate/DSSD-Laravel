@@ -19,8 +19,9 @@
 		@foreach($incident->objects as $i)
 		   <tr>
 			    <td>{{ $i->nombre }} </td>
-			    <td>{{ $i->cantidad }}</td>
-		        <td>{{ $i->descripcion }}</td>
+			    <td>{{ $i->descripcionObjeto }}</td>
+			    <td>{{ $i->cantidadObjeto }}</td>
+		        
 		        
 		   </tr>  
 

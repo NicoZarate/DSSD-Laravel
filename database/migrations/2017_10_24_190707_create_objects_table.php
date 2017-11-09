@@ -13,14 +13,14 @@ class CreateObjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('objects', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('objetos', function (Blueprint $table) {
+            $table->increments('ObjectId');
             $table->timestamps();
             $table->integer('incident_id')->unsigned();
             $table->foreign('incident_id')->references('id')->on('incidents');
             $table->string('nombre');
-            $table->integer('cantidad');
-            $table->string('descripcion');
+            $table->integer('cantidadObjeto');
+            $table->string('descripcionObjeto');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateObjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objects');
+        Schema::dropIfExists('objetos');
     }
 }

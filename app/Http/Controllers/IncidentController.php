@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Incident;
+use App\Objeto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +18,6 @@ class IncidentController extends Controller
     {   
         $id = Auth::user()->id;
         $incidents = Incident::all()->where('user_id',$id);
-        //print_r($incidents[0]->tipo );
         return view('incidents/incidents', compact('incidents'));
     }
 
@@ -47,16 +47,27 @@ class IncidentController extends Controller
                                    'descripcion'=> ['required','max:250']
                                    ]);
 */        $objetos = $request->get('objetos');
-         Incident::create(['user_id'=> Auth::user()->id,
+          $incidente=Incident::create(['user_id'=> Auth::user()->id,
                            'tipo'=> $request->get('tipo'),
                            'fecha'=> $request->get('from'),
-                           'cantidad'=> count($objetos),
+                           'cantidad'=> count($objetos)/3,
                            'descripcion'=> $request->get('descripcion'),
                            'estado'=> 'Nuevo'
                            ]);
-        
+         $id= $incidente->id;
+        for( $i= 0 ; $i < count($objetos) ; $i=$i + 3) {
+
+               
+                   Objeto::create([
+                           'nombre'=> $objetos[$i],
+                           'descripcionObjeto'=>$objetos[$i+1] ,
+                           'cantidadObjeto'=> $objetos[$i+2],
+                           'incident_id'=> $id           
+                          ]);
+            
+            }
        
-      return redirect('incidents')
+       return redirect('incidents')
             ->with('status', 'success')
             ->with('message', 'Producto creado exitosamente');
     }

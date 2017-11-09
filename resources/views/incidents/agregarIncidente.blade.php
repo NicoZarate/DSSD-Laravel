@@ -32,7 +32,7 @@
 
 		<div class="input_fields_wrap">
 		    <button class="add_field_button">Agregar Objetos</button>
-		    <div><input type="hidden" name="objetos[]"></div>
+		   
 		</div>
 	   	
 	   	<br>
@@ -59,9 +59,9 @@
             x++; //text box increment
             $("#rm").remove(); 
             
-            $(wrapper).append('<div class="form-group" id="divs">Nombre: <input class="form-control" type="text" name="objetos[]"/>'); //add input box
-            $(wrapper).append('<div class="form-group" id="divs">Descripción: <input class="form-control" type="text" name="objetos[]"/>'); //add input box
-            $(wrapper).append('<div class="form-group" id="divs">Cantidad: <input class="form-control" type="text" name="objetos[]"/></div>'); //add input box
+            $(wrapper).append('<div class="form-group" id="divs">Nombre: <input class="form-control" type="text" name="objetos[] required"/>'); //add input box
+            $(wrapper).append('<div class="form-group" id="divs">Descripción: <input class="form-control" type="text" name="objetos[] required"/>'); //add input box
+            $(wrapper).append('<div class="form-group" id="divs">Cantidad: <input class="form-control" type="number"  min="0" name="objetos[] required"/></div>'); //add input box
             $(wrapper).append('<div class="form-group" id="divs"><a href="#" id="rm" class="remove_field">Eliminar</a></div>'); //add input box
             $(wrapper).append('<br>')
         }
