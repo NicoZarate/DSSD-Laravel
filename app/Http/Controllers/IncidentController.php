@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Cookie\SessionCookieJar;
+use GuzzleHttp\Cookie\CookieJar;
 
 class IncidentController extends Controller
 {
@@ -95,20 +98,59 @@ class IncidentController extends Controller
 
     public function peticiones()
     {
-        //'username=evaluador1&password=bpm&redirect=false&redirectURL='
-        $client = new Client([
-   
-            'base_uri' => 'http://localhost:8080/bonita/',
-            
-            'timeout'  => 2.0,
-             ]);
-        $headers = ['Content-Type' => 'application/x-www-form-urlencoded'];
-        $body = ['username' => 'evaluador1',
-                 'password' => 'bpm',
-                 'redirect' => false];
-                 
-        $response = $client->request('GET', '/API/bpm/process?p=0&c=10');
-        dd($response);
+       try {  
+            $cookieJar = new SessionCookieJar('MiCookie', true);    
+            $client = new Client([
+                'base_uri' => 'http://localhost:8080/bonita/',
+                'timeout'  => 4.0,
+                'cookies' => $cookieJar
+            ]);   
+
+
+            //logeo con bonita
+            $response = $client->request('POST', 'loginservice', [
+                    'form_params' => [
+                    'username' => 'evaluador1',
+                    'password' => 'bpm',
+                    'redirect' => 'false',
+                     'redirectURL' => '' 
+                    ]
+                ]);
+            $token = $cookieJar->getCookieByName('X-Bonita-API-Token');
+            $_SESSION['X-Bonita-API-Token'] = $token->getValue();
+            //consegir el id proceso ,pasado por bonita
+            $request = $client->request('GET', 'API/bpm/process?c=10&p=0');
+            $tareas = $request->getBody();
+            $idProceso=json_decode($tareas)[0]->id;
+            //agregar caso a bonita
+             $request = $client->request('POST', 'API/bpm/case',
+                        ['headers' => [
+                            'X-Bonita-API-Token' => $_SESSION['X-Bonita-API-Token']
+                            ],
+                         'json' => [
+                            'processDefinitionId' => $idProceso,  
+                             'variables' =>[
+                                 "name"=>"incidenciaId",
+                                 "value"=>"1"
+                               ] 
+                             ]              
+                        ]);
+
+            } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                $error = Psr7\str($e->getResponse());
+            } else {
+                $error = "No se puede conectar al servidor de Bonita OS";
+            }
+
+            return $error;
+        }
+        /*
+                            "variables" => [
+                                "name"=>"incidenciaId",
+                                "value"=>"1"
+                                  ]
+                            ]  */
     }
 
 
