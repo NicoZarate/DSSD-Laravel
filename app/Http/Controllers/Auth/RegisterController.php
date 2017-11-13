@@ -38,7 +38,10 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    public function showRegistrationForm()
+    {   //para anular la pagina lo reedirijo al login que su controlador se encarga
+        return view('pages.login');
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -58,7 +61,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
@@ -66,6 +69,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'lastname'=>$data['lastname'],
+            'dni'=>$data['dni'],
+            'phone'=>$data['phone'],
+            'role_id'=>'client',                   
+                            
         ]);
     }
 }
