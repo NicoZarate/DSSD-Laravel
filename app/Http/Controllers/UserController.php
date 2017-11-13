@@ -14,12 +14,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->middleware('manager');
-    
-    }
+
     public function index(Request $request)
     {   //$roles = Role::all();
         //$users = User::name($request->get('username'),$request->get('role_id'))
@@ -35,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user/add');
+        return view('users/add');
     }
 
     /**
@@ -47,7 +42,7 @@ class UserController extends Controller
     public function store(Request $request)
     {   
         $this->validate($request,['name'=> ['required','max:190'],
-                                   'email'=> ['required','max:190', 'unique:users, email'],
+                                   'email'=> ['required','max:190', 'unique:users,email'],
                                    'password'=> ['required','max:190', 'confirmed'],
                                    'password_confirmation'=> ['required','max:190'],
                                    'lastname'=> ['required','max:190'],

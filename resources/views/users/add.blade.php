@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
-<div class="row">
- <div class="col-md-8 col-md-offset-2">
+
+<div class="container-fluid paj bg-1 text-center">
 	<h2>Agregar un nuevo Usuario </h2>
 	@include('errors/errors')
 
@@ -29,10 +29,6 @@
 		   	<input type="number" name="phone" id="phone" class="form-control" value="{{ old('phone') }}" min="1" required>	   	  
 		</div>
 		<div class="form-group">
-			<label for="username">Nombre de usuario:</label>
-		   	<input type="text" name="username" id="username" class="form-control" value="{{ old('username') }}" required>	   	  
-		</div>
-		<div class="form-group">
 			<label for="password">Contraseña:</label>
 		   	<input type="password" name="password" id="password" class="form-control" value="" required>	   	  
 		</div>
@@ -41,29 +37,9 @@
 		   	<input type="password" name="password_confirmation" id="password_confirmation" class="form-control" value="" required>	   	  
 		</div>
 
-		<div class="form-group">
-			<label for="role_id">Seleccione un Rol:</label>
-		   	  <select name="role_id" id="role_id" class="form-control" required>
-		   	  	    <option value="{{ old('role_id') }}"></option>
-		   	     	@foreach($roles as $r)
-		   	     	    <option value="{{$r->id}}">{{ $r->description }}</option>
-		   	     	@endforeach    
-		   	  </select>
-		</div>
-
-		<div class="form-group">
-			<label for="location_id">Seleccione una ubicación:</label>
-		   	  <select name="location_id" id="location_id" class="form-control" disabled>
-		   	  	    <option value="{{ old('location_id') }}"></option>
-		   	     	@foreach($locations as $l)
-		   	     	    <option value="{{$l->id}}">{{ $l->office }}</option>
-		   	     	@endforeach    
-		   	  </select>
-		</div>
-
 
 	   	<button type="submit" class="btn col-xs-12 btn-create-submit"> Agregar Usuario</button>
 	</form>
-</div>	
-</div>	
+</div>		
+
 @endsection
