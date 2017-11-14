@@ -71,7 +71,7 @@ class IncidentController extends Controller
                           ]);
             
             }
-       
+       $this->peticiones($id);
        return redirect('incidents')
             ->with('status', 'success')
             ->with('message', 'Producto creado exitosamente');
@@ -96,7 +96,7 @@ class IncidentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function peticiones()
+    public function peticiones($id)
     {
        try {  
             $cookieJar = new SessionCookieJar('MiCookie', true);    
@@ -120,8 +120,10 @@ class IncidentController extends Controller
             $_SESSION['X-Bonita-API-Token'] = $token->getValue();
             //consegir el id proceso ,pasado por bonita
             $request = $client->request('GET', 'API/bpm/process?c=10&p=0');
+
             $tareas = $request->getBody();
             $idProceso=json_decode($tareas)[0]->id;
+                    
             //agregar caso a bonita
              $request = $client->request('POST', 'API/bpm/case',
                         ['headers' => [
@@ -129,12 +131,16 @@ class IncidentController extends Controller
                             ],
                          'json' => [
                             'processDefinitionId' => $idProceso,  
-                             'variables' =>[
+                            'variables' =>[
+                                  [
                                  "name"=>"incidenciaId",
-                                 "value"=>"1"
+                                 "value"=>$id
+                                  ]
                                ] 
                              ]              
                         ]);
+            
+         
 
             } catch (RequestException $e) {
             if ($e->hasResponse()) {
