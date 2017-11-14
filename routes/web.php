@@ -17,7 +17,7 @@ Route::get('/', function () {
 	 }
      return view('pages.home');
 });
-Route::get('incidents/req', 'IncidentController@peticiones');
+
 Route::resource('incidents', 'IncidentController');
 Route::resource('users', 'UserController');
 Route::get('/pages/dashboard', 'HomeController@index');
