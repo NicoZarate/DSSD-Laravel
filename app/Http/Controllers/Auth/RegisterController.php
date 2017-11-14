@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 class RegisterController extends Controller
 {
     /*
@@ -19,16 +16,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = '/home';
-
     /**
      * Create a new controller instance.
      *
@@ -37,10 +31,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
-    public function showRegistrationForm()
-    {   //para anular la pagina lo reedirijo al login que su controlador se encarga
-        return view('pages.login');
     }
     /**
      * Get a validator for an incoming registration request.
@@ -56,12 +46,11 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \App\User
      */
     protected function create(array $data)
     {

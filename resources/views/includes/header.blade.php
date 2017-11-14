@@ -17,7 +17,8 @@
              <li><a href="{{ url('/incidents/create') }}">Agregar Incidencia</a></li>
              <li><a href="{{ url('/incidents/req') }}">req</a></li>
         @else
-          <li><a href="{{ url('register') }}">Registrar Nuevo Usuario</a></li>
+          <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home"></span></a></li>
+          <li><a href="{{ url('/users/create') }}">Registrar Nuevo Usuario</a></li>
         @endif
       </ul>
       <ul class="nav navbar-nav navbar-right">

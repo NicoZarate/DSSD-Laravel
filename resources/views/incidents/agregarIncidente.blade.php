@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid paj bg-1 text-center">
-  <h3>Bienvenido {{ Auth::user()->name }}</h3>
+
   <h3>Complete los datos para cargar su incidente</h3>
 
 
