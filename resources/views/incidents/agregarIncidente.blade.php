@@ -6,6 +6,7 @@
 
   <h3>Complete los datos para cargar su incidente</h3>
 
+@include('errors/errors')
 
 	<form method="post" action="{{ url('incidents') }}">
 		{!! csrf_field() !!}

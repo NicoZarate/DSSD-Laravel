@@ -24,7 +24,16 @@
 				<td>{{ $i->fecha }} </td>
 		        <td>{{ $i->descripcion }}</td>
 		        <td>{{ $i->cantidad }}</td>
-		        <td>{{ $i->estado }}</td>
+		        @if ($i->estado == "Rechazado" or $i->estado == "Presupuesto Rechazado" or $i->estado == "Vencido")
+		        	@php
+						$color = "red"
+					@endphp
+		        @else
+		        	@php
+						$color = "green"
+					@endphp
+		        @endif
+		        <td> <font color={{ $color }}> {{ $i->estado }} </font></td>
                 <td><div class="form-group" id="divs"><a href="{{ route('incidents.show',$i->id) }}" id="ver" >Ver</a></div></td>
 		   </tr>  
 

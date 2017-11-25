@@ -19,6 +19,14 @@ class IncidentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    
+    }
+
     public function index()
     {   
         $id = Auth::user()->id;
@@ -46,6 +54,12 @@ class IncidentController extends Controller
     {
 
 
+        $this->validate($request,[
+                                   'objetos'=> ['required'],
+                                   ],
+                                   [
+                                    'objetos.required' => 'Debe ingresar al menos un objeto'
+                                   ]);
       /*  $this->validate($request,['fecha'=> ['required'],
                                    'tipo'=> ['required'],
                                    'cantidad'=> ['required'],

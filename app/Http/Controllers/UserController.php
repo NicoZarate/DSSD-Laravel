@@ -14,6 +14,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        
+        $this->middleware('manager');
+    
+    }
+
 
     public function index(Request $request)
     {   //$roles = Role::all();
@@ -41,23 +48,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {   
-        echo($request->name);
-        $this->validate($request,['name'=> ['required','max:190'],
+        $this->validate($request,[
                                    'email'=> ['required','max:190', 'unique:users,email'],
-                                   'password'=> ['required','max:190', 'confirmed'],
-                                   'password_confirmation'=> ['required','max:190'],
-                                   'lastname'=> ['required','max:190'],
-                                   'dni'=> ['required','max:190'],
-                                   'phone'=> ['required','max:190'],
                                    ]);
-        $client = User::create([
-                        'name' => $request->name,
-                        'email' => $request->email,
-                        'password' => bcrypt($request->password),
-                        'lastname'=> $request->lastname,
-                        'dni'=> $request->dni,
-                        'phone'=> $request->phone,                    
-                        ]);
+        $client = User::create($request->all());
+
         $client->roles()->attach(Role::where('name', 'client')->first());
        
         return redirect('/')

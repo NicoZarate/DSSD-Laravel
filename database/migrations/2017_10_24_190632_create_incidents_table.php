@@ -23,6 +23,7 @@ class CreateIncidentsTable extends Migration
             $table->integer('cantidad');
             $table->string('descripcion');
             $table->string('estado');
+            $table->string('presupuesto')->nullable();
         });
     }
 
