@@ -120,9 +120,17 @@ class IncidentController extends Controller
             $_SESSION['X-Bonita-API-Token'] = $token->getValue();
             //consegir el id proceso ,pasado por bonita
             $request = $client->request('GET', 'API/bpm/process?c=10&p=0');
-
-            $tareas = $request->getBody();
-            $idProceso=json_decode($tareas)[0]->id;
+            
+            //lista de procesos
+            $tareas = json_decode($request->getBody());
+           
+            for( $i= 0 ; $i < count($tareas) ; $i++){
+                 if($tareas[$i]->name == "SSA-DSSD"){
+                          $idProceso=$tareas[$i]->id;
+                 }
+                 //una salida de error que no existe el proceso
+            }
+            
                     
             //agregar caso a bonita
              $request = $client->request('POST', 'API/bpm/case',

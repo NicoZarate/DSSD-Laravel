@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Incident;
 use App\Objeto;
+use App\Http\Controllers\IncidentController;
 
 class ContextoSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class ContextoSeeder extends Seeder
      */
     public function run()
     {
-
+       $req= new IncidentController();
 
        $incidente=Incident::create(['user_id'=> 1,
                            'tipo'=> "Casa",
@@ -36,7 +37,7 @@ class ContextoSeeder extends Seeder
                            'cantidadObjeto'=> 1,
                            'incident_id'=> $id           
                           ]);   
-
+        $req->peticiones($id);
         $incidente=Incident::create(['user_id'=> 1,
                            'tipo'=> "Auto",
                            'fecha'=> Date("Y-m-d"),
@@ -57,6 +58,6 @@ class ContextoSeeder extends Seeder
                            'cantidadObjeto'=> 1,
                            'incident_id'=> $id           
                           ]);      
-
+       $req->peticiones($id);
     }
 }
