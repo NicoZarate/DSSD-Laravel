@@ -54,6 +54,12 @@ class IncidentController extends Controller
     {
 
 
+        $this->validate($request,[
+                                   'objetos'=> ['required'],
+                                   ],
+                                   [
+                                    'objetos.required' => 'Debe ingresar al menos un objeto'
+                                   ]);
       /*  $this->validate($request,['fecha'=> ['required'],
                                    'tipo'=> ['required'],
                                    'cantidad'=> ['required'],
