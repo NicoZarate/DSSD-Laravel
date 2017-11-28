@@ -24,7 +24,7 @@
 				<td>{{ $i->fecha }} </td>
 		        <td>{{ $i->descripcion }}</td>
 		        <td>{{ $i->cantidad }}</td>
-		        @if ($i->estado == "Rechazado" or $i->estado == "Presupuesto Rechazado" or $i->estado == "Vencido")
+		        @if ($i->estado == "Rechazado" or $i->estado == "Presupuesto rechazado" or $i->estado == "Vencido")
 		        	@php
 						$color = "red"
 					@endphp

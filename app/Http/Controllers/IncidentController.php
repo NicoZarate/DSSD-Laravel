@@ -53,6 +53,22 @@ class IncidentController extends Controller
     public function store(Request $request)
     {
 
+        $objetos = $request->get('objetos');
+        //dd($objetos[1]);
+        $haynull=false;
+        for( $i= 0 ; $i < count($objetos) ; $i=$i + 1) {
+
+               if ($objetos[$i]== null){
+                $haynull=true;
+               }
+            
+            }
+
+        if ($haynull){
+             return redirect('incidents/create')
+                        ->withErrors("Complete todos los campos de los objetos")
+                        ->withInput();
+        }
 
         $this->validate($request,[
                                    'objetos'=> ['required'],
